@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="window.location.href='cart.html'" class="cart-button">🛒 Shporta</button>
+    <h1>Rio Mare</h1>
+    <div class="gallery">
+        <div class="gallery-item" onclick="openPopup('Rio Mare Tonno Pisselli 2*160gr', 100)">
+            <img src="img/rio/RioMare.png">
+            <h4>Rio Mare Tonno Pisselli 2*160gr</h4>
+            <h6>456hjfk4</h6>
+        </div>
+        <div class="gallery-item" onclick="openPopup('Rio Mare Tonno eeeeee 2*160gr', 100)">
+            <img src="img/rio/rio2.png">
+            <h4>Rio Mare Tonno eeeeee 2*160gr</h4>
+            <h6>456hjfk4</h6>
+        </div>
+        <div class="gallery-item" onclick="openPopup('Rio Mare Tonno aaaaaa 2*160gr', 100)">
+            <img src="img/rio/rio2.png">
+            <h4>Rio Mare Tonno aaaaaa 2*160gr</h4>
+            <h6>456hjfk4</h6>
+        </div>
+        <div class="gallery-item" onclick="openPopup('Rio Mare Tonno kklkkkl 2*160gr', 100)">
+            <img src="img/rio/rio2.png">
+            <h4>Rio Mare Tonno kklkkkl 2*160gr</h4>
+            <h6>456hjfk4</h6>
+        </div>
+        <div class="gallery-item" onclick="openPopup('Rio Mare Tonno dkjf 2*160gr', 100)">
+            <img src="img/rio/rio2.png">
+            <h4>Rio Mare Tonno dkjf 2*160gr</h4>
+            <h6>456hjfk4</h6>
+        </div>
+    </div>
+    
+    <!-- Overlay dhe popup -->
+    <div class="popup-overlay" onclick="closePopup()"></div>
+    <div class="popup" id="productPopup">
+        <h4 id="popupTitle"></h4>
+        <h5 id="popupPrice"></h5>
+        <input type="number" id="popupQuantity" min="0" value="" style="width: 50px;">
+        <button class="add-btn" onclick="addToCart()">+</button>
+    </div>
+
+    <script>
+        let selectedProduct = {};
+
+        function openPopup(name, price) {
+            selectedProduct = { name, price };
+            document.getElementById("popupTitle").innerText = name;
+            document.getElementById("popupPrice").innerText = price + "$";
+            document.getElementById("popupQuantity").value = "";
+            document.querySelector(".popup-overlay").style.display = "block";
+            document.getElementById("productPopup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.querySelector(".popup-overlay").style.display = "none";
+            document.getElementById("productPopup").style.display = "none";
+        }
+
+        function addToCart() {
+            let quantity = parseInt(document.getElementById("popupQuantity").value);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            let existingProduct = cart.find(item => item.name === selectedProduct.name);
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({ name: selectedProduct.name, price: selectedProduct.price, quantity });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Produkti u shtua në shportë!');
+            closePopup();
+        }
+    </script>
+</body>
+</html>

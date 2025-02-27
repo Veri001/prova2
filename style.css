@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background: url('img/hero4.png') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 50px;
+    margin-top: 20px;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+.header h3{
+    color: black;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.cart-button:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 produkte në telefon */
+    gap: 15px;
+    padding: 10px;
+    justify-content: center;
+}
+
+
+.gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+.gallery-item img {
+    width: 100%;
+    max-width: 180px; /* Përmasë standarde për të gjitha produktet */
+    height: 180px;
+    object-fit: contain; /* Bën që imazhet të mos deformohen */
+    border-radius: 5px;
+}
+
+.gallery-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.cart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Stili për popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+}
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+@media (max-width: 600px) {
+    .cart-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 50px; /* E ul titullin pak më poshtë */
+    }
+}
